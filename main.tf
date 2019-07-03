@@ -151,6 +151,7 @@ module "codebuild" {
   github_token                = var.github_oauth_token
   environment_variables       = var.environment_variables
   cache_bucket_suffix_enabled = var.codebuild_cache_bucket_suffix_enabled
+  badge_enabled               = var.badge_enabled
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild_s3" {

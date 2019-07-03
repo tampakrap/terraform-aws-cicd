@@ -146,3 +146,9 @@ variable "codebuild_cache_bucket_suffix_enabled" {
   description = "The cache bucket generates a random 13 character string to generate a unique bucket name. If set to false it uses terraform-null-label's id value"
   default     = true
 }
+
+variable "badge_enabled" {
+  type        = bool
+  default     = false
+  description = "Generates a publicly-accessible URL for the projects build badge. Available as codebuild_badge_url attribute when enabled"
+}
