@@ -192,14 +192,16 @@ resource "aws_codepipeline" "source_build_deploy_old" {
     action {
       name             = "Source"
       category         = "Source"
-      owner            = "AWS"
-      provider         = "CodeCommit"
+      owner            = "ThirdParty"
+      provider         = "GitHub"
       version          = "1"
       output_artifacts = ["code"]
 
       configuration = {
-        RepositoryName       = var.repo_name
-        BranchName           = var.branch
+        OAuthToken           = var.github_oauth_token
+        Owner                = var.repo_owner
+        Repo                 = var.repo_name
+        Branch               = var.branch
         PollForSourceChanges = var.poll_source_changes
       }
     }
@@ -259,14 +261,16 @@ resource "aws_codepipeline" "source_build" {
     action {
       name             = "Source"
       category         = "Source"
-      owner            = "AWS"
-      provider         = "CodeCommit"
+      owner            = "ThirdParty"
+      provider         = "GitHub"
       version          = "1"
       output_artifacts = ["code"]
 
       configuration = {
-        RepositoryName       = var.repo_name
-        BranchName           = var.branch
+        OAuthToken           = var.github_oauth_token
+        Owner                = var.repo_owner
+        Repo                 = var.repo_name
+        Branch               = var.branch
         PollForSourceChanges = var.poll_source_changes
       }
     }
