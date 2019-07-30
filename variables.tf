@@ -149,3 +149,15 @@ variable "codebuild_cache_bucket_suffix_enabled" {
   description = "The cache bucket generates a random 13 character string to generate a unique bucket name. If set to false it uses terraform-null-label's id value"
   default     = true
 }
+
+variable "capabilities" {
+  type        = string
+  default     = "NONE"
+  description = "TODO"
+}
+
+variable "template_path" {
+  type        = string
+  default     = ""
+  description = "TODO"
+}

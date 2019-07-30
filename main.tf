@@ -102,7 +102,7 @@ data "aws_iam_policy_document" "s3" {
     resources = [
       aws_s3_bucket.default.arn,
       "${aws_s3_bucket.default.arn}/*",
-      "arn:aws:s3:::elasticbeanstalk*"
+      #"arn:aws:s3:::elasticbeanstalk*"
     ]
 
     effect = "Allow"
@@ -151,6 +151,7 @@ module "codebuild" {
   github_token                = var.github_oauth_token
   environment_variables       = var.environment_variables
   cache_bucket_suffix_enabled = var.codebuild_cache_bucket_suffix_enabled
+  cache_enabled               = false
 }
 
 resource "aws_iam_role_policy_attachment" "codebuild_s3" {
@@ -174,9 +175,9 @@ resource "aws_iam_role_policy_attachment" "codebuild_s3" {
 
 # 1. GitHub -> ECR (Docker image)
 
-resource "aws_codepipeline" "source_build_deploy" {
+resource "aws_codepipeline" "source_build_deploy_old" {
   # Elastic Beanstalk application name and environment name are specified
-  count    = var.enabled && signum(length(var.app)) == 1 && signum(length(var.env)) == 1 ? 1 : 0
+  count    = 0
   name     = module.label.id
   role_arn = aws_iam_role.default.arn
 
@@ -243,7 +244,7 @@ resource "aws_codepipeline" "source_build_deploy" {
 }
 
 resource "aws_codepipeline" "source_build" {
-  count    = var.enabled && signum(length(var.app)) == 0 || signum(length(var.env)) == 0 ? 1 : 0
+  count    = 0
   name     = module.label.id
   role_arn = aws_iam_role.default.arn
 
