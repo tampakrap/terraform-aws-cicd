@@ -52,6 +52,12 @@ data "aws_iam_policy_document" "cloudformation" {
       "lambda:ListTags",
       "lambda:TagResource",
       "lambda:UntagResource",
+      "lambda:ListVersionsByFunction",
+      "lambda:PublishVersion",
+      "lambda:CreateAlias",
+      "lambda:UpdateAlias",
+      "lambda:GetFunctionConfiguration",
+      "lambda:UpdateFunctionConfiguration",
     ]
 
     resources = ["*"]
