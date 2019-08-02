@@ -58,6 +58,9 @@ data "aws_iam_policy_document" "cloudformation" {
       "lambda:UpdateAlias",
       "lambda:GetFunctionConfiguration",
       "lambda:UpdateFunctionConfiguration",
+      "apigateway:POST",
+      "apigateway:PATCH",
+      "apigateway:DELETE",
     ]
 
     resources = ["*"]
