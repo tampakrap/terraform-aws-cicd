@@ -45,6 +45,7 @@ data "aws_iam_policy_document" "cloudformation" {
       "iam:AttachRolePolicy",
       "iam:DetachRolePolicy",
       "iam:PassRole",
+      "iam:PutRolePolicy",
       "lambda:GetFunction",
       "lambda:CreateFunction",
       "lambda:DeleteFunction",
